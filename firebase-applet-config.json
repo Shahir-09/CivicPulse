@@ -1,0 +1,8 @@
+{
+  "apiKey": "your-firebase-api-key-here",
+  "authDomain": "civicpulse-e48de.firebaseapp.com",
+  "projectId": "civicpulse-e48de",
+  "storageBucket": "civicpulse-e48de.firebasestorage.app",
+  "appId": "1:924621569984:web:3d7eff139bd02a67761225",
+  "firestoreDatabaseId": ""
+}

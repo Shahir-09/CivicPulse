@@ -1,0 +1,36 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+firebase-applet-config.json
+firebase-blueprint.json
+GIT_COMMIT_SCHEDULE.md
+
+# Testing
+coverage/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript
+*.tsbuildinfo
+
+push.bat
+undo.bat
+GIT_COMMIT_SCHEDULE.md
+
+# Unnecessary files
+temp_user_input.txt
+*.zip
+ChatGPT Image*.svg
+assets/project_description.md
