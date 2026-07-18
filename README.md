@@ -6,6 +6,12 @@ Collaborative civic hazard logging ledger with real-time tracking, AI agent proc
 
 ## 🏁 Quick Start
 
+### 💻 Prerequisites
+* **Node.js**: `v20.x` or `v22.x` (LTS recommended)
+* **npm**: `v10.x` or higher
+* **Database**: Firebase Firestore instance (Web/Server SDK compatible)
+* **Browser Capabilities**: HTTPS or localhost environment (required for Navigator Geolocation & Camera APIs)
+
 ### 1. Installation
 Install all backend and frontend dependencies:
 ```bash
@@ -19,19 +25,26 @@ cp .env.example .env
 ```
 Fill out the variables as described in the [Configuration](#-configuration) section below.
 
-### 3. Run Development Server
+### 3. Database Seeding (Optional)
+To initialize your local Firestore database with mock concerns, Kolkata wards, and worker roles:
+```bash
+# Seed initial mock data
+npm run seed
+```
+
+### 4. Run Development Server
 Launches the Express server and mounts the Vite frontend middleware on Port `3000`:
 ```bash
 npm run dev
 ```
 
-### 4. Build and Launch Production Server
+### 5. Build and Launch Production Server
 ```bash
 npm run build
 npm start
 ```
 
-### 5. Testing
+### 6. Testing & Typechecking
 The project uses `vitest` and `@testing-library/react` for unit and integration testing.
 ```bash
 # Run tests
@@ -116,13 +129,16 @@ graph TD
 *   **Ward Integration**: Mapped neighborhood ledger focused on key Kolkata wards (with a default Kolkata seed), supporting manual map plotting, auto-address resolution, and custom landmark aligners.
 *   **Live Location Module**: Precision-5 geohashing and interactive locality pickers to accurately map hazards and dispatch repair crews.
 
-### 🤖 AI Agent Orchestration
-CivicPulse utilizes a sophisticated array of Gemini-powered agents for automated triage:
-*   **Vision Triage (Predictive Agent)**: Scans submitted photos, determines category tags, grades severity (1-5), and computes target completion SLAs.
-*   **Voice Cleanup (Summary Agent)**: Transforms raw speech transcript inputs into concise, structured titles and descriptions.
-*   **Dual-Image Verification (Verification Agent)**: Side-by-side comparison of "before" and "after" photos to programmatically verify and close tickets.
-*   **Duplicate Detection (Duplicate Agent)**: Detects nearby issues and merges duplicates using Gemini Vision.
-*   **Weather Intelligence (Weather Agent)**: Fetches real-time weather data and posts geohash-specific flood alerts.
+### 🤖 AI Agent Architecture & Telemetry
+CivicPulse utilizes a sophisticated array of Gemini-powered agents for automated triage and validation:
+*   **Vision Triage (Predictive Agent)**: Scans submitted photos, determines category tags (e.g., `pothole`, `streetlight`, `water`, `waste`), grades severity (1-5), and computes target completion SLAs.
+*   **Voice Cleanup (Summary Agent)**: Transforms raw speech transcript inputs from citizen voice descriptions into concise, structured titles and summaries.
+*   **Dual-Image Verification (Verification Agent)**: Performs side-by-side comparison of "before" and "after" photos to verify and auto-close resolved tickets.
+*   **Duplicate Detection (Duplicate Agent)**: Detects nearby issues within a geohash radius and merges duplicate reports using Gemini Vision.
+*   **Weather Intelligence (Weather Agent)**: Fetches real-time weather data and posts geohash-specific flood alerts to affected citizens.
+
+> [!NOTE]
+> **API Fallback Mode**: If `GEMINI_API_KEY` is not present or rate-limited, CivicPulse transitions to local deterministic simulation models, permitting local developers to fully test the interface flows without external credentials.
 
 ### 🛡️ Admin & Super-Admin Portals
 *   **Role-Based Access Control (RBAC)**: Secure access routes configured for citizens, inspectors, admins, and super-admins.
@@ -146,7 +162,12 @@ CivicPulse is powered by a robust ecosystem of specialized partner technologies 
 | **Mem0 AI** | `mem0ai` client | Powers the personalized user memory layer. Stores and retrieves user-scoped feedback history, reporting behavior, and chat context. |
 | **Keploy** | `keploy.yml` | Automates end-to-end integration test generation, capturing and replaying network and API dependencies. |
 
----
+### 🎙️ Real-time Voice STT Telemetry Flow
+For live reporting, raw microphone audio frames are streamed from the client directly to the Express gateway, which proxies the payload upstream via WebSocket to ensure secure header transit.
+
+```text
+[Browser Microphone] ──(Raw PCM 16kHz)──> [Express Gateway (/ws/gnani)] ──(Auth Key Header)──> [Vachana API (wss://)]
+```
 
 ## ⚙️ Configuration
 
@@ -191,6 +212,17 @@ The following environment variables configure the application:
 │   ├── i18n/                  # Multilingual translation dictionaries (en, hi, bn)
 │   └── utils/                 # Points/reward scoring engine, geohashing, and Firebase seeders
 ```
+
+---
+
+## 🔧 Troubleshooting & FAQ
+
+* **Interactive Map is Blank (Beige canvas)**
+  Ensure your deployment environment's Content-Security-Policy (CSP) headers allow connections to `basemaps.cartocdn.com` for vector tile JSON loading.
+* **Camera Access Blocked in Live Scan**
+  Modern browsers restrict device access (Camera, GPS) to secure contexts (HTTPS or localhost). If running inside an iframe or non-secure HTTP, CivicPulse will automatically switch to a high-fidelity visual simulation engine.
+* **Vachana STT Connection Fails**
+  Check that `GNANI_API_KEY` in your `.env` is correct. If absent, the gateway reverts to a demo voice simulator to showcase real-time translation features.
 
 ---
 
