@@ -1056,20 +1056,21 @@ export default function MapPage() {
               bottom: '20px',
               width: '380px',
               maxWidth: 'calc(100% - 40px)',
-              background: 'rgba(10, 12, 16, 0.95)',
+              background: 'var(--surface)',
               backdropFilter: 'blur(12px)',
               border: '1px solid var(--border)',
               borderRadius: '8px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.7)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
               zIndex: 40,
               display: 'flex',
               flexDirection: 'column',
               overflow: 'hidden',
-              animation: 'fadeIn 0.2s ease-out'
+              animation: 'fadeIn 0.2s ease-out',
+              color: 'var(--text-1)'
             }}
           >
             {/* Drawer Image Header */}
-            <div style={{ height: '180px', position: 'relative', background: '#0f172a', borderBottom: '1px solid var(--border)' }}>
+            <div style={{ height: '180px', position: 'relative', background: 'var(--surface-2)', borderBottom: '1px solid var(--border)' }}>
               {selectedIssue.imageUrl ? (
                 <img 
                   src={selectedIssue.imageUrl} 
@@ -1084,7 +1085,7 @@ export default function MapPage() {
                   flexDirection: 'column',
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  background: 'linear-gradient(135deg, #1e293b, #0f172a)',
+                  background: 'var(--surface-2)',
                   color: 'var(--text-2)',
                   gap: '12px'
                 }}>
@@ -1105,7 +1106,7 @@ export default function MapPage() {
                   position: 'absolute',
                   top: '12px',
                   right: '12px',
-                  background: 'rgba(10,12,16,0.6)',
+                  background: 'rgba(0,0,0,0.45)',
                   border: 'none',
                   borderRadius: '50%',
                   width: '28px',
@@ -1239,17 +1240,17 @@ export default function MapPage() {
               bottom: '90px',
               width: '380px',
               maxWidth: 'calc(100% - 40px)',
-              background: 'rgba(10, 12, 16, 0.95)',
+              background: 'var(--surface)',
               backdropFilter: 'blur(12px)',
               border: '1px solid var(--border)',
               borderRadius: '8px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.7)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
               zIndex: 41,
               display: 'flex',
               flexDirection: 'column',
               overflow: 'hidden',
               animation: 'fadeIn 0.2s ease-out',
-              color: '#FFFFFF'
+              color: 'var(--text-1)'
             }}
           >
             {/* Drawer Header */}
@@ -1260,15 +1261,15 @@ export default function MapPage() {
                   position: 'absolute',
                   top: '20px',
                   right: '20px',
-                  background: 'rgba(255,255,255,0.1)',
-                  border: 'none',
+                  background: 'var(--surface-2)',
+                  border: '1px solid var(--border)',
                   borderRadius: '50%',
                   width: '28px',
                   height: '28px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF',
+                  color: 'var(--text-1)',
                   cursor: 'pointer'
                 }}
               >
