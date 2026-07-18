@@ -157,7 +157,16 @@ app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") {
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self' https: data: blob:; script-src 'self' https:; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' https: wss:;"
+      [
+        "default-src 'self' https: data: blob:",
+        "script-src 'self' https: blob:",
+        "worker-src blob: 'self'",
+        "child-src blob: 'self'",
+        "style-src 'self' https: 'unsafe-inline'",
+        "font-src 'self' https: data:",
+        "img-src 'self' https: data: blob:",
+        "connect-src 'self' https: wss:",
+      ].join("; ")
     );
   } else {
     res.setHeader(
