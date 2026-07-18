@@ -53,6 +53,14 @@ A GitHub Actions CI workflow is configured to run tests and typechecking automat
 | **Report Hazard** | ![Report Page](./assets/screenshots/report.png) | Interactive filing form with live camera simulation, speech cleaning, and checkpoint options. |
 | **Community Board** | ![Community Discussion](./assets/screenshots/community.png) | Real-time public discussion forum for neighborhood wards, sortable by category and date. |
 | **Citizen Dashboard** | ![Dashboard Page](./assets/screenshots/dasboard.png) | Ward queue page displaying active resolutions, before/after visual verification, and municipal escalations. |
+| **Admin Dashboard** | ![Admin Dashboard](./assets/screenshots/admin_dashboard.png) | High-level municipal overview showing active/resolved issues, open tasks, and quick navigation modules. |
+| **Admin Complaints** | ![Admin Complaints](./assets/screenshots/admin_complaints_detail.png) | Ward infrastructure complaints overview page with a detail inspection and triage drawer open. |
+| **Admin Task Dependencies** | ![Admin Task Dependencies](./assets/screenshots/admin_task_dependencies.png) | Detail view showing inter-departmental blocking tasks (e.g. Traffic Police vs. Forest Department) and AI routing. |
+| **Admin Departments** | ![Admin Departments](./assets/screenshots/admin_departments.png) | Active workloads, worker count, and blocked tasks count broken down by municipal department. |
+| **Admin Analytics** | ![Admin Analytics](./assets/screenshots/admin_analytics.png) | Municipal Intelligence Center displaying resolution rates, SLA compliance metrics, and distress category breakdowns. |
+| **Super Admin Municipalities** | ![Super Admin Municipalities](./assets/screenshots/super_admin_municipalities.png) | Governance view to add, track, and manage operational municipalities (Kolkata, Mumbai, Bangalore, Chennai, Hyderabad). |
+| **Super Admin AI Monitoring** | ![Super Admin AI Monitoring](./assets/screenshots/super_admin_ai_monitoring.png) | Real-time monitoring log dashboard showing Gemini AI pipeline health, latency, token usage, and status breakdown. |
+| **Super Admin Analytics** | ![Super Admin Analytics](./assets/screenshots/super_admin_analytics.png) | Platform-wide performance and cross-municipality issue density metrics. |
 
 ### 📊 Application Functional Flow
 
