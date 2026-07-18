@@ -145,7 +145,7 @@ export default function MapPage() {
     try {
       mapInstance = new maplibregl.Map({
         container: 'openfreemap-canvas',
-        style: 'https://tiles.openfreemap.org/styles/liberty',
+        style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
         center: [88.3639, 22.5726], // Koramangala, Kolkata
         zoom: 12.5,
         pitch: 0,

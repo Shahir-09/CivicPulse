@@ -550,7 +550,7 @@ export default function ReportPage() {
       try {
         const mapInstance = new maplibregl.Map({
           container: mapContainerRef.current,
-          style: 'https://tiles.openfreemap.org/styles/liberty',
+          style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
           center: [lng, lat],
           zoom: 14,
           pitch: 0,
