@@ -1,0 +1,12 @@
+# Keploy configuration
+# Supported versions: v2+
+# Documentation: https://docs.keploy.io
+
+path: ./
+command: "npm run dev"
+port: 3000
+enableTesting: true
+tests:
+  path: ./keploy/tests
+mocks:
+  path: ./keploy/mocks
